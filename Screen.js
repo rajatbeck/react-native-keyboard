@@ -3,7 +3,6 @@
  */
 import React, {Component} from 'react';
 import {
-    Platform,
     StyleSheet,
     Text,
     View,
@@ -12,9 +11,13 @@ import {
     TouchableOpacity,
     KeyboardAvoidingView,
     ScrollView,
-    Keyboard
+    Keyboard,
+    Dimensions,
+    Platform
 } from 'react-native';
-import {KeyboardAwareScrollView} from "react-native-keyboard-aware-scroll-view";
+import {Container, Content, Footer} from "native-base";
+var {width, height} = Dimensions.get('window');
+height = Platform.OS === 'android'?height - 80:height-60;
 
 class Screen extends React.Component {
 
@@ -25,22 +28,22 @@ class Screen extends React.Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
         this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
     }
 
-    componentWillUnMount(){
+    componentWillUnMount() {
         this.keyboardDidShowListener.remove();
         this.keyboardDidHideListener.remove();
     }
 
 
-    _keyboardDidShow () {
+    _keyboardDidShow() {
 
     }
 
-    _keyboardDidHide () {
+    _keyboardDidHide() {
 
     }
 
@@ -65,136 +68,118 @@ class Screen extends React.Component {
     render() {
         return (
 
-            <View style={{flex: 1}}>
+            <Container style={{flex: 1}}>
 
-                <KeyboardAwareScrollView contentContainerStyle={{
-                    alignItems:'center',
-                    marginTop: 20
-                }}
-                enableOnAndroid={true}
+                <Content >
 
-                >
+                    <View style={{
+                        flex: 1,
+                        height,
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
 
+                        <View>
 
-                    <TextInput
-                        onFocus={() => {
-                            // if (this.state.text.trim().length === 0)
-                            //     this.setState({text: '$ '})
-                        }}
-                        underlineColorAndroid='transparent'
-                        autoFocus={false}
-                        onChangeText={(text) => {
-                            let s = this.formatPhoneNumber(text);
-                            this.setState({text: s})
+                            <TextInput
+                                onFocus={() => {
+                                    // if (this.state.text.trim().length === 0)
+                                    //     this.setState({text: '$ '})
+                                }}
+                                underlineColorAndroid='transparent'
+                                autoFocus={false}
+                                onChangeText={(text) => {
+                                    let s = this.formatPhoneNumber(text);
+                                    this.setState({text: s})
 
-                        }}
-                        returnKeyType="done"
-                        keyboardType={'default'}
-                        value={this.state.text}
-                        style={{height: 40, borderColor: 'gray', borderWidth: 1, width: 200}}
+                                }}
+                                returnKeyType="done"
+                                keyboardType={'default'}
+                                value={this.state.text}
+                                style={{
+                                    height: 40,
+                                    borderColor: 'gray',
+                                    borderWidth: 1,
+                                    width: 200,
+                                    marginTop:20
+                                }}
 
-                    />
+                            />
 
-                    <TextInput
-                        onFocus={() => {
-                            // if (this.state.text.trim().length === 0)
-                            //     this.setState({text: '$ '})
-                        }}
-                        underlineColorAndroid='transparent'
-                        autoFocus={false}
-                        onChangeText={(text) => {
-                            let s = this.formatPhoneNumber(text);
-                            this.setState({text: s})
+                            <TextInput
+                                onFocus={() => {
+                                    // if (this.state.text.trim().length === 0)
+                                    //     this.setState({text: '$ '})
+                                }}
+                                underlineColorAndroid='transparent'
+                                autoFocus={false}
+                                onChangeText={(text) => {
+                                    let s = this.formatPhoneNumber(text);
+                                    this.setState({text: s})
 
-                        }}
-                        returnKeyType="done"
-                        keyboardType={'default'}
-                        value={this.state.text}
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1,
-                            width: 200,
-                            marginTop: 50,
-                        }}
+                                }}
+                                returnKeyType="done"
+                                keyboardType={'default'}
+                                value={this.state.text}
+                                style={{
+                                    height: 40,
+                                    borderColor: 'gray',
+                                    borderWidth: 1,
+                                    width: 200,
+                                    marginTop: 50,
+                                }}
 
-                    />
+                            />
 
-                    <TextInput
-                        onFocus={() => {
-                            // if (this.state.text.trim().length === 0)
-                            //     this.setState({text: '$ '})
-                        }}
-                        underlineColorAndroid='transparent'
-                        autoFocus={false}
-                        onChangeText={(text) => {
-                            let s = this.formatPhoneNumber(text);
-                            this.setState({text: s})
+                            <TextInput
+                                onFocus={() => {
+                                    // if (this.state.text.trim().length === 0)
+                                    //     this.setState({text: '$ '})
+                                }}
+                                underlineColorAndroid='transparent'
+                                autoFocus={false}
+                                onChangeText={(text) => {
+                                    let s = this.formatPhoneNumber(text);
+                                    this.setState({text: s})
 
-                        }}
-                        returnKeyType="done"
-                        keyboardType={'default'}
-                        value={this.state.text}
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1,
-                            width: 200,
-                            marginTop: 50,
-                        }}
+                                }}
+                                returnKeyType="done"
+                                keyboardType={'default'}
+                                value={this.state.text}
+                                style={{
+                                    height: 40,
+                                    borderColor: 'gray',
+                                    borderWidth: 1,
+                                    width: 200,
+                                    marginTop: 50,
+                                }}
 
-                    />
+                            />
 
-                    <TextInput
-                        onFocus={() => {
-                            // if (this.state.text.trim().length === 0)
-                            //     this.setState({text: '$ '})
-                        }}
-                        underlineColorAndroid='transparent'
-                        autoFocus={false}
-                        onChangeText={(text) => {
-                            let s = this.formatPhoneNumber(text);
-                            this.setState({text: s})
+                            <TextInput
+                                onFocus={() => {
+                                    // if (this.state.text.trim().length === 0)
+                                    //     this.setState({text: '$ '})
+                                }}
+                                underlineColorAndroid='transparent'
+                                autoFocus={false}
+                                onChangeText={(text) => {
+                                    let s = this.formatPhoneNumber(text);
+                                    this.setState({text: s})
 
-                        }}
-                        returnKeyType="done"
-                        keyboardType={'default'}
-                        value={this.state.text}
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1,
-                            width: 200,
-                            marginTop: 50,
-                        }}
+                                }}
+                                returnKeyType="done"
+                                keyboardType={'default'}
+                                value={this.state.text}
+                                style={{
+                                    height: 40,
+                                    borderColor: 'gray',
+                                    borderWidth: 1,
+                                    width: 200,
+                                    marginTop: 50,
+                                }}
 
-                    />
-
-                    <TextInput
-                        onFocus={() => {
-                            // if (this.state.text.trim().length === 0)
-                            //     this.setState({text: '$ '})
-                        }}
-                        underlineColorAndroid='transparent'
-                        autoFocus={false}
-                        onChangeText={(text) => {
-                            let s = this.formatPhoneNumber(text);
-                            this.setState({text: s})
-
-                        }}
-                        returnKeyType="done"
-                        keyboardType={'default'}
-                        value={this.state.text}
-                        style={{
-                            height: 40,
-                            borderColor: 'gray',
-                            borderWidth: 1,
-                            width: 200,
-                            marginTop: 50,
-                        }}
-
-                    />
-
+                            />
 
 
                             <TextInput
@@ -218,30 +203,66 @@ class Screen extends React.Component {
                                     borderWidth: 1,
                                     width: 200,
                                     marginTop: 50,
-
                                 }}
 
                             />
 
 
+                            <TextInput
+                                onFocus={() => {
+                                    // if (this.state.text.trim().length === 0)
+                                    //     this.setState({text: '$ '})
+                                }}
+                                underlineColorAndroid='transparent'
+                                autoFocus={false}
+                                onChangeText={(text) => {
+                                    let s = this.formatPhoneNumber(text);
+                                    this.setState({text: s})
+
+                                }}
+                                returnKeyType="done"
+                                keyboardType={'default'}
+                                value={this.state.text}
+                                style={{
+                                    height: 40,
+                                    borderColor: 'gray',
+                                    borderWidth: 1,
+                                    width: 200,
+                                    marginTop: 50,
+                                    marginBottom: 20,
+
+                                }}
+
+                            />
+                        </View>
 
 
-                </KeyboardAwareScrollView>
+                        <TouchableOpacity
+                            style={{
+                                position: 'absolute',
+                                bottom: 0,
+                                height: 50,
+                                width,
+                                alignItems: 'center',
+                                justifyContent:'center',
+                                backgroundColor: 'black',
+                            }}
+                            onPress={() => this.unformatPhone(this.state.text)}>
+                            <Text
+                                style={{
+                                    color: 'white',
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>Press</Text>
+                        </TouchableOpacity>
 
 
-                <TouchableOpacity
-                    style={{
-                        backgroundColor: 'black',
-                        height: 50,
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                    }}
-                    onPress={() => this.unformatPhone(this.state.text)}>
-                    <Text style={{color: 'white', alignItems: 'center'}}>Press</Text>
-                </TouchableOpacity>
+                    </View>
 
-            </View>
 
+                </Content>
+
+            </Container>
 
 
         );
